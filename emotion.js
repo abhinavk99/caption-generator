@@ -258,7 +258,7 @@ app.post('/home', upload.array(), (req, res) => {
         var emojis = '';
         var quotes = '';
 
-        if (avCon > 0.5) {
+        if (avCon > 0.9) {
           for (var i = 0; i < 3; i++) {
             var e1 = confidenceWords[Math.floor(Math.random() * confidenceWords.length)];
             emojis += ('|' + emoji.get(e1));
