@@ -148,25 +148,66 @@ const joyQuotes = [
   'Just let it be',
   'Happiness can be found, even in the darkest of times if only one remembers to turn on the light.',
   'What feels like the end is often the beginning.',
-  'Always believe that something wonderful is about to happen.'
+  'Always believe that something wonderful is about to happen.',
+  'A smile never hurt anyone.',
+  'Be the highlight of your own day.',
+  'Enjoy every 1, 440 second.',
+  'Smile brighter than the sun.',
+  'Beauty is power, a smile is its sword.',
+  'Life’s too much fun to be serious all the time.',
+  'A smile a day, keeps the doctors away.',
+  'Laugh like you’re at the orthodontist.',
+  'Laugh so hard that your burn calories.'
 ];
 
 const confidenceQuotes = [
-  'I am who I am, I am what I am, I do what I do and I ain’t never gonna do it any different. I don’t care who likes it and who doesn’t.',
-  'Do not take life too seriously. You will never get out of it alive'
+  'It’s hard being this cute.',
+  'The mirror is my best friend.',
+  'Waking up like this is pretty great.',
+  'You can only like once, but I’ll take both of your hearts.',
+  'Beauty from inside and out …but mainly out.',
+  'You’re welcome.',
+  'Arrested for being too cute.',
+  'Sharpie’s newest ultra fine.',
+  'Does your feed need an extinguisher?'
 ];
 
 const sorrowQuotes = [
   'I guess broken pieces of glass hurt one badly and so does broken pieces of human heart.',
-  'Whenever I feel that things are going the right direction, they take a U-turn.'
+  'Whenever I feel that things are going the right direction, they take a U-turn.',
+  'A hug would be nice right now.',
+  'Shake if off and chin up.',
+  'There’s always tomorrow.',
+  'Being there doesn’t always have to be literal.',
+  'If you need space, you may go to Narnia.',
+  'At least I have two hearts now.',
+  'Tears can plant trees.',
+  'Cry a river, build a bride, and get over it.',
+  'I’m not crying I just got thirsty.'
 ];
 
 const angerQuotes = [
-  'I hate the world'
+  'It’s fine, I’m fine.',
+  'Angry? What that lol no…',
+  'Stab in the front, not back.',
+  'I’m not saying I’m mad but I’m definitely not happy.',
+  'Treat me like a joke an I’ll leave like it’s funny.',
+  'I’m steaming so much that I could build a sauna. ',
+  'I’ve seem to lost my bag of giving shits. ',
+  'Smile with your teeth, battle with your eyes.',
+  '“strongly dislike”.'
 ];
 
 const surpriseQuotes = [
-  'Wow!'
+  'Great things happen to those who wait.',
+  'Blessed for with opportunities.',
+  'Spontaneous adventures are the best.',
+  'Sometimes best moments are the ones you didn’t’ plan.',
+  'Don’t know how this happened, but not complaining.',
+  'Been practicing the gasp face for a while now.',
+  'When things work out that weren’t supposed to.',
+  'Random events that are remembered for years.',
+  'I’m more oblivious than I knew.'
 ];
 
 app.use(bodyParser.json()); // for parsing application/json
@@ -198,12 +239,12 @@ app.post('/home', upload.array(), (req, res) => {
         // console.log(faceInfo);
         // console.log(detCon);
         // console.log(lanCon);
-        console.log(joy);
-        console.log(sorrow);
-        console.log(anger);
-        console.log(surprise);
+        console.log('joy: ' + joy);
+        console.log('sorrow: ' + sorrow);
+        console.log('anger: '+ anger);
+        console.log('surprise: ' + surprise);
         var avCon = (detCon + lanCon) / 2;
-        console.log(avCon);
+        console.log('confidence: ' + avCon);
 
         var posEmotions = ['POSSIBLE', 'LIKELY', 'VERY_LIKELY'];
         var emotions = [
@@ -213,25 +254,25 @@ app.post('/home', upload.array(), (req, res) => {
           [surprise, surpriseWords, surpriseQuotes]
         ];
 
-        // String of emojis that relate to the 
+        // String of emojis that relate to the
         var emojis = '';
         var quotes = '';
 
         if (avCon > 0.5) {
           for (var i = 0; i < 3; i++) {
             var e1 = confidenceWords[Math.floor(Math.random() * confidenceWords.length)];
-            emojis += (',' + emoji.get(e1));
+            emojis += ('|' + emoji.get(e1));
             var q1 = confidenceQuotes[Math.floor(Math.random() * confidenceQuotes.length)];
-            quotes += (',' + q1);
+            quotes += ('|' + q1);
           }
         }
         emotions.forEach((tup) => {
           if (posEmotions.indexOf(tup[0]) > -1) {
             for (var i = 0; i < 3; i++) {
               var e1 = tup[1][Math.floor(Math.random() * tup[1].length)];
-              emojis += (',' + emoji.get(e1));
+              emojis += ('|' + emoji.get(e1));
               var q1 = tup[2][Math.floor(Math.random() * tup[2].length)];
-              quotes += (',' + q1);
+              quotes += ('|' + q1);
             }
           }
         });
@@ -241,11 +282,11 @@ app.post('/home', upload.array(), (req, res) => {
         quotes = quotes.substring(1);
         emojis = emojis.substring(1);
         console.log(emojis);
-        res.send(emojis + ',' + quotes);
+        res.send(emojis + '||' + quotes);
       } else {
         console.log('Error');
-        res.send('Error: Enter a valid URL.');
-      } 
+        res.send(' Error: Enter a valid URL.');
+      }
     })
     .catch((err) => {
       console.error(err);

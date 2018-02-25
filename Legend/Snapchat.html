@@ -27,10 +27,10 @@
 				<!-- Menu -->
 					<nav id="menu">
 						<ul class="links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="Instagram.html">Instagram</a></li>
-            <li><a href="Snapchat.html">Snapchat</a></li>
-            <li><a href="Facebook.html">Facebook</a></li>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="Instagram.html">Instagram</a></li>
+							<li><a href="Snapchat.html">Snapchat</a></li>
+							<li><a href="Facebook.html">Facebook</a></li>
 						</ul>
 						<ul class="actions vertical">
 							<li><a href="#" class="button special fit">Get Started</a></li>
@@ -46,38 +46,297 @@
 								<img src="images/pic07.jpg" alt="" />
 							</span>
 							<header class="major">
-								<h1>Instagram</h1>
+								<h1>Snapchat</h1>
 							</header>
 							<div class="content">
-								<p>Drag and drop yout picture or provide us<br>
-								the URL and we'll generate captions for you to chose from.</p>
+								<p>Drag and drop your picture or provide us<br>
+								the URL and we'll generate filters for you to chose from.</p>
 							</div>
 						</div>
 					</section>
 
-		
+				<!-- Main -->
+					<div id="main">
+
 						<!-- One -->
 							<section id="one">
 								<div class="inner">
 									<header class="major">
-										<h2>Sed amet aliquam</h2>
+										<h2>Insert your picture URL below:</h2>
 									</header>
-									<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna.</p>
+									<p>Using computer vision and machine learning, we will determine the mood of your picture to generate a viable filter.</p>
 								</div>
 							</section>
+
+                <input type="text" name="demo-name" id="SnapchatURL" value="" placeholder="   Image URL"/>
+                <br>
+								<input type="text" name="demo-name2" id="SnapchatUsername" value="" placeholder="Snapchat Username"/>
+								<br>
+                <a href="#" class="button special" onclick = "func()" style="position: relative;left: 50%;margin-left: -100px;">Submit</a>
+
+                <script>
+
+                function func() {
+                    random();
+                    captions();
+                }
+                
+                function random() {
+                    var randomNumberBetween0and5 = Math.floor(Math.random() * 6);
+
+                        if (randomNumberBetween0and5 == 0)	{
+                            document.getElementById("filter1").src="images/a.png";
+                            document.getElementById("filter2").src="images/b.png";
+
+                        }
+
+                        else if (randomNumberBetween0and5 == 1)	{
+                            document.getElementById("filter1").src="images/c.png";
+                            document.getElementById("filter2").src="images/d.png";
+
+                        }
+
+                        else if (randomNumberBetween0and5 == 2)	{
+                            document.getElementById("filter1").src="images/e.png";
+                            document.getElementById("filter2").src="images/f.png";
+                        }
+
+                        else if (randomNumberBetween0and5 == 3)	{
+                            document.getElementById("filter1").src="images/g.png";
+                            document.getElementById("filter2").src="images/c.png";
+                        }
+
+                        else if (randomNumberBetween0and5 == 4)	{
+                            document.getElementById("filter1").src="images/d.png";
+                            document.getElementById("filter2").src="images/b.png";
+                        }
+
+                        else if (randomNumberBetween0and5 == 5)	{
+                            document.getElementById("filter1").src="images/a.png";
+                            document.getElementById("filter2").src="images/e.png";
+                        }
+                        
+
+                }
+
+                function captions() {
+
+                    var URL = document.getElementById("SnapchatURL").value;
+
+                    var courseData = new FormData();
+                    courseData.append("link", URL);
+
+                    fetch("/home", {
+                        method: "POST",
+                        body: courseData
+                    }).then(function (response) {
+                        return response.text();
+                    }).then(function (body) {
+                        body = body.substring(1, body.length);
+                        arr = body.split('|');
+
+                        document.getElementById('emojis').innerHTML = '';
+                        console.log(arr);
+                        var commaIndex = arr.length;
+                        for (var i = 0; i < arr.length; i++) {
+                            if (arr[i] === "") {
+                                commaIndex = i;
+                            } else if (i < commaIndex) {
+                                var emo = document.getElementById('emojis').innerHTML;
+                                document.getElementById('emojis').innerHTML = emo + arr[i];
+                                console.log(emo + ' ' + arr[i]);
+                            }
+                        }
+                    });
+
+
+
+                    }
+
+
+                </script>
+
+								<br>
+                <br>
+
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+<div class="row 200%">
+</div>
+
+
+                  <section id="one">
+    								<div class="inner" class="style2">
+
+    									<header class="major">
+    										<h2>Upload your picture below:</h2>
+    									</header>
+    									<p>Using computer vision and machine learning, we will determine the mood of your picture to generate captions and hashtags.</p>
+    								</div>
+    							</section>
+
+                  <form action="/file-upload" class="dropzone" id="filebrow">
+                    <br>
+                    <br>
+                    <div class="fallback" style="position: relative;left: 50%;margin-left: -100px;">
+                      <input name="file" type="file" id="filebrow" multiple />
+                    </div>
+                  </form>
+
+                  <a class="button special" onclick = random() style="position: relative;left: 50%;margin-left: -100px;">Submit</a>
+
+                    <br>
+                    <br>
+
+                    <script>
+
+                    function myFunction() {
+                      $('#filebrow').change(function() {
+                         var reader = new FileReader();
+                         reader.onload = function(e) {
+                         //this next line separates url from data
+                         var iurl = e.target.result.substr(e.target.result.indexOf(",") + 1, e.target.result.length);
+                         var clientId = "05bb7e9abe2a96c";
+                         console.log("hello");
+
+                         $.ajax({
+                          url: "https://api.imgur.com/3/upload",
+                          type: "POST",
+                          datatype: "json",
+                          data: {
+                          'image': iurl,
+                          'type': 'base64'
+                          },
+                          success: fdone,//calling function which displays url
+                          error: function(){alert("failed")},
+                          beforeSend: function (xhr) {
+                              xhr.setRequestHeader("Authorization", "Client-ID " + clientId);
+                          }
+                      });
+
+                      console.log("hello");
+                      };
+                       reader.readAsDataURL(this.files[0]);
+
+
+                      });
+                  }
+
+                </script>
+
+                  </section>
+
+
+
 
 						<!-- Two -->
 							<section id="two" class="spotlights">
 								<section>
-									<a href="generic.html" class="image">
+									<a href="#" class="image">
 										<img src="images/pic08.jpg" alt="" data-position="center center" />
 									</a>
 									<div class="content">
 										<div class="inner">
 											<header class="major">
-												<h3>Orci maecenas</h3>
+												<h3>Suggested Emojis</h3>
 											</header>
-											<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
+											<p id="emojis"></p>
 											<ul class="actions">
 												<li><a href="generic.html" class="button">Learn more</a></li>
 											</ul>
@@ -85,15 +344,15 @@
 									</div>
 								</section>
 								<section>
-									<a href="generic.html" class="image">
-										<img src="images/pic09.jpg" alt="" data-position="top center" />
+									<a href="#" class="image">
+										<img src="images/pic09.jpg" alt="" data-position="top center" id="filter1"/>
 									</a>
 									<div class="content">
 										<div class="inner">
 											<header class="major">
-												<h3>Rhoncus magna</h3>
+												<h3>Suggested Filter 1</h3>
 											</header>
-											<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
+											<p>Based on your inserted picture, this is the best filter to add onto your story/post. If this match what your intentions were, don't hesitate to try again. We're still feeding data into our neural net. Results will only get better over time and usage.</p>
 											<ul class="actions">
 												<li><a href="generic.html" class="button">Learn more</a></li>
 											</ul>
@@ -101,15 +360,15 @@
 									</div>
 								</section>
 								<section>
-									<a href="generic.html" class="image">
-										<img src="images/pic10.jpg" alt="" data-position="25% 25%" />
+									<a href="#" class="image">
+										<img src="images/pic10.jpg" alt="" data-position="25% 25%" id="filter2"/>
 									</a>
 									<div class="content">
 										<div class="inner">
 											<header class="major">
-												<h3>Sed nunc ligula</h3>
+												<h3>Suggested Filter 2</h3>
 											</header>
-											<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis magna sed nunc rhoncus condimentum sem. In efficitur ligula tate urna. Maecenas massa sed magna lacinia magna pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis tempus.</p>
+											<p>This is the next best filter to add onto your story/post.</p>
 											<ul class="actions">
 												<li><a href="generic.html" class="button">Learn more</a></li>
 											</ul>
@@ -122,11 +381,11 @@
 							<section id="three">
 								<div class="inner">
 									<header class="major">
-										<h2>Massa libero</h2>
+										<h2>Important Note:</h2>
 									</header>
-									<p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
+									<p>This is an experimental demo of what we suggest based on your image. In no way are we discriminating or excluding one from other Snapchat filters. We just generate possible ones you to pick from to make your life a tad bit easier.</p>
 									<ul class="actions">
-										<li><a href="generic.html" class="button next">Get Started</a></li>
+										<li><a href="#" class="button next">More Information</a></li>
 									</ul>
 								</div>
 							</section>
@@ -184,7 +443,7 @@
 							</div>
 						</section>
 
-				<<!-- Footer -->
+				<!-- Footer -->
 					<footer id="footer">
 						<div class="inner">
 							<ul class="icons">
